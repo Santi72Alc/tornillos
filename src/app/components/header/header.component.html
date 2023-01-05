@@ -8,23 +8,13 @@
 
   <!-- Login / Logout -->
   <div class="ml-auto">
-    <div [hidden]="userLogged.isLogged">
-      <button
-        class="btn btn-primary btn-success d-flex"
-        (click)="onClick(true)"
-      >
+    <button class="btn btn-primary btn-success d-flex" (click)="onClick(!userLogged.isLogged)">
       <div class="mx-3">{{ userLogged.name }}</div>
-        <div><span class="material-icons"> login </span></div>
-      </button>
-    </div>
-    <div [hidden]="!userLogged.isLogged">
-      <button
-        class="btn btn-primary btn-success d-flex"
-        (click)="onClick(false)"
-      >
-        <div class="mx-3">{{ userLogged.name }}</div>
-        <div><span class="material-icons"> logout </span></div>
-      </button>
-    </div>
+      <div>
+        <span class="material-icons">
+          {{ userLogged.isLogged ? "login" : "logout" }}
+        </span>
+      </div>
+    </button>
   </div>
 </div>
