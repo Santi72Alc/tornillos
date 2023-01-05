@@ -32,10 +32,16 @@ export const data: Array<Tornillo> = [
         marca: 'Aliquip commodo esse fugiat veniam adipisicing et aute commodo.',
         precio: 5.78
     }, {
-        id: 1,
-        nombre: 'Josue',
-        formato: 'red',
-        marca: 'Lorem labore quis proident excepteur eu pariatur reprehenderit.',
-        precio: 6.40
+        id: 6,
+        nombre: 'Emily',
+        formato: 'green',
+        marca: 'Esse culpa quis sit culpa magna exercitation exercitation.',
+        precio: 8.47
+    },{
+        id: 7,
+        nombre: 'Peter',
+        formato: 'blue',
+        marca: 'Sint anim labore esse aliquip eiusmod voluptate tempor aute nisi quis.',
+        precio: 8.56
     },
 ]
