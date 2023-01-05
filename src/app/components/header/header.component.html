@@ -1,0 +1,21 @@
+<div
+  class="d-flex justify-content-between align-items-center p-3 border-bottom border-3"
+>
+  <div>
+    <img src="assets/logo_mercadona.png" alt="mercadona" class="logo" />
+  </div>
+  <div class="ml-auto">
+    <div [hidden]="userLogged.isLogged">
+      <button class="btn btn-primary btn-success d-flex">
+        Iniciar sesión
+        <div class="ps-2"><span class="material-icons"> login </span></div>
+      </button>
+    </div>
+    <div [hidden]="!userLogged.isLogged">
+      <button class="btn btn-primary btn-success d-flex align-content-center">
+        {{ userLogged.name }}
+        <div class="ps-2"><span class="material-icons"> logout </span></div>
+      </button>
+    </div>
+  </div>
+</div>
