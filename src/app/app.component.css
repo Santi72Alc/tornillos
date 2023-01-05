@@ -1,4 +1,16 @@
-
 .ventana-info {
     margin-top: 80px;
+}
+
+.box-spinner {
+    display: flex;
+    margin-top: 150px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-spinner {
+    width: 5rem;
+    height: 5rem;
 }

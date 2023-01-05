@@ -1,19 +1,32 @@
-<!-- Header -->
-<app-header [userLogged]="userLogged" (onChangeState)="onChangeState($event)"></app-header>
+<!-- Header (Nos permite logearnos o salirnos)-->
+<app-header
+  [userLogged]="userLogged"
+  (onChangeState)="onChangeState($event)"
+></app-header>
 
-<!-- Página inicial (NO ESTAMOS LOGADOS NI VIENDO DATOS) -->
+<!-- Página inicial -->
 <div [hidden]="!isHomePage">
   <!-- Home page -->
   <app-home></app-home>
 
   <!-- Ventana info de inicio -->
-  <div class="ventana-info d-flex justify-content-center">
-    <app-window-info [userLogged]="userLogged" [registros]="tornillos.length"></app-window-info>
+  <div [hidden]="isLoading">
+    <div class="ventana-info d-flex justify-content-center">
+      <app-window-info
+        [userLogged]="userLogged"
+        [registros]="tornillos.length"
+        (onRevisar)="onRevisar()"
+      ></app-window-info>
+    </div>
+  </div>
+
+  <div class="box-spinner" [hidden]="!isLoading">
+    <div class="my-spinner spinner-border text-success" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="text-center mt-3 fs-3">Cargando...</div>
   </div>
 </div>
-
-
-
 
 <!-- 
 <div class="fixed-bottom d-flex justify-content-center py-3">

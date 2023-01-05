@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/types/types';
 
 @Component({
@@ -11,7 +11,15 @@ export class WindowInfoComponent {
 
   @Input() registros: number;
 
+  @Output() onRevisar: EventEmitter<void>;
+
   constructor() {
     this.registros = 0;
+
+    this.onRevisar = new EventEmitter();
+  }
+
+  onClick() {
+    this.onRevisar.emit()
   }
 }

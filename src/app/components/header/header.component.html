@@ -8,7 +8,12 @@
 
   <!-- Login / Logout -->
   <div class="ml-auto">
-    <button class="btn btn-primary btn-success d-flex" (click)="onClick(!userLogged.isLogged)">
+    <button
+      class="btn {{
+        userLogged.isLogged ? 'btn-outline-success': 'btn-success'
+      }} d-flex"
+      (click)="onClick(!userLogged.isLogged)"
+    >
       <div class="mx-3">{{ userLogged.name }}</div>
       <div>
         <span class="material-icons">
