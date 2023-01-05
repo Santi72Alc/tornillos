@@ -9,5 +9,9 @@ import { User } from 'src/app/types/types';
 export class WindowInfoComponent {
   @Input() userLogged!: User;
 
-  constructor() {}
+  @Input() registros: number;
+
+  constructor() {
+    this.registros = 0;
+  }
 }
