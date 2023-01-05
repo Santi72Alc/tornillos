@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { timeout } from 'rxjs';
 import { data } from './mock/tornillos.data';
 import { Tornillo, User } from './types/types';
@@ -8,23 +8,26 @@ import { Tornillo, User } from './types/types';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title: string;
 
   userLogged: User;
   isHomePage: boolean;
 
-  tornillos: Array<Tornillo>;
+  tornillos: Array<Tornillo> = [];
   isLoading: boolean;
-  private userTest: User = { isLogged: true, name: 'dqmcteis' };
-  private noUser: User = { isLogged: false, name: 'Inicie sesión' };
+  private userTest: User = { isLogged: true, name: 'omcteis' };
+  private noUser: User = { isLogged: false, name: 'Iniciar sesión' };
 
   constructor() {
     this.title = 'Tornillos';
     this.userLogged = this.noUser;
-    this.tornillos = data;
     this.isLoading = false;
     this.isHomePage = true;
+  }
+
+  ngOnInit(): void {
+    this.tornillos = data;
   }
 
   onChangeState(isLogged: boolean) {

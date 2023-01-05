@@ -10,15 +10,12 @@
   <app-home></app-home>
 
   <!-- Ventana info de inicio -->
-  <div [hidden]="isLoading">
-    <div class="ventana-info d-flex justify-content-center">
-      <app-window-info
-        [userLogged]="userLogged"
-        [registros]="tornillos.length"
-        (onRevisar)="onRevisar()"
-      ></app-window-info>
-    </div>
-  </div>
+  <app-window-info
+    [userLogged]="userLogged"
+    [registros]="tornillos.length"
+    (onRevisar)="onRevisar()"
+    [hidden]="isLoading"
+  ></app-window-info>
 
   <div class="box-spinner" [hidden]="!isLoading">
     <div class="my-spinner spinner-border text-success" role="status">
