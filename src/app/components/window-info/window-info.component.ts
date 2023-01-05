@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { User } from 'src/app/types/types';
 
 @Component({
   selector: 'app-window-info',
@@ -6,5 +7,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./window-info.component.css'],
 })
 export class WindowInfoComponent {
+  @Input() userLogged!: User;
+
   constructor() {}
 }

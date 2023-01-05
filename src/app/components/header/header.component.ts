@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from 'src/app/types/types';
 
 @Component({
@@ -8,4 +8,14 @@ import { User } from 'src/app/types/types';
 })
 export class HeaderComponent {
   @Input() userLogged!: User;
+
+  @Output() onChangeState: EventEmitter<boolean>;
+
+  constructor() {
+    this.onChangeState = new EventEmitter();
+  }
+
+  onClick(state: boolean) {
+    this.onChangeState.emit(state);
+  }
 }

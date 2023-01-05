@@ -10,21 +10,21 @@ import { Tornillo, User } from './types/types';
 export class AppComponent {
   title: string;
 
-  user: User;
+  userLogged: User;
   isHomePage: boolean;
 
   tornillos: Array<Tornillo>;
-  private userTest: User = { isLogged: true, name: 'userTest' };
+  private userTest: User = { isLogged: true, name: 'dqmcteis' };
+  private noUser: User = { isLogged: false, name: 'Inicie sesión' };
 
   constructor() {
     this.title = 'Tornillos';
-    this.user = {
-      isLogged: false,
-      name: '',
-    };
+    this.userLogged = this.noUser;
     this.tornillos = data;
     this.isHomePage = true;
   }
 
-  goHomePage = (state: boolean = true) => (this.isHomePage = state);
+  onChangeState(newState: boolean) {
+    this.userLogged = newState ? this.userTest : this.noUser;
+  }
 }

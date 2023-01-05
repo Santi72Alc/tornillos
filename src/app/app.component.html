@@ -1,5 +1,5 @@
 <!-- Header -->
-<app-header [userLogged]="user"></app-header>
+<app-header [userLogged]="userLogged" (onChangeState)="onChangeState($event)"></app-header>
 
 <!-- Página inicial (NO ESTAMOS LOGADOS NI VIENDO DATOS) -->
 <div [hidden]="!isHomePage">
@@ -8,7 +8,7 @@
 
   <!-- Ventana info de inicio -->
   <div class="ventana-info d-flex justify-content-center">
-    <app-window-info></app-window-info>
+    <app-window-info [userLogged]="userLogged"></app-window-info>
   </div>
 </div>
 
