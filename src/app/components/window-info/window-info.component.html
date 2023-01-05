@@ -1,15 +1,29 @@
-<div class="window-info bg-light p-4 border shadow">
-  <p class="fw-bold">Tornillos</p>
-  <!-- Número de tornillos existentes -->
-  <p class="fw-light">100 por revisar</p>
-  <hr class="mt-4" />
-  <div class="d-flex justify-content-center">
+<section id="windows-info" class="d-flex justify-content-center mt-5">
+  <div class="card shadow w-25 rounded-3 text-bg-light p-4">
+    <h3 class="fw-bold">Tornillos</h3>
+    <!-- Número de tornillos existentes -->
+    <h4 class="fw-light mt-3">{{ registros }} registros a revisar</h4>
+    <hr class="mt-5" />
     <!-- Hacer el boton disabled hasta que se loggee -->
-    <button class="btn btn-success d-flex">
-      <div class="me-2">
-        <span class="material-icons"> visibility </span>
+    <div class="card-body d-flex flex-column">
+      <div class="d-flex justify-content-center">
+        <button
+          class="btn btn-success d-flex justify-content-center"
+          [disabled]="!userLogged.isLogged"
+          (click)="onClick()"
+        >
+          <div class="me-3">
+            <span class="material-icons"> visibility </span>
+          </div>
+          Revisar
+        </button>
       </div>
-      Revisar
-    </button>
+      <div
+        class="fs-6 text-muted mt-2 text-center"
+        [hidden]="userLogged.isLogged"
+      >
+        Inicie sesión para revisar datos, por favor
+      </div>
+    </div>
   </div>
-</div>
+</section>
