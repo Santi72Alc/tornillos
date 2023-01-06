@@ -25,7 +25,6 @@
   </div>
 </div>
 
-<!-- 
-<div class="fixed-bottom d-flex justify-content-center py-3">
-    <button class="btn btn-primary px-3">{{title}}</button>
-</div> -->
+<div [hidden]="isHomePage">
+  <app-listado-page></app-listado-page>
+</div>
