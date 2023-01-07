@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { data } from '../mock/tornillos.data';
+import { data } from '../../mock/tornillos.data';
 import { Tornillo } from '../models/interfaces';
 
 @Injectable({
@@ -12,4 +12,5 @@ export class TornillosService {
   getAllTornillos(): Array<Tornillo> {
     return data;
   }
+
 }

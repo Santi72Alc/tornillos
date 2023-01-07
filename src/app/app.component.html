@@ -12,7 +12,7 @@
   <!-- Ventana info de inicio -->
   <app-window-info
     [userLogged]="userLogged"
-    [registros]="tornillos.length"
+    [registros]="numTornillos"
     (onRevisar)="onRevisar()"
     [hidden]="isLoading"
   ></app-window-info>
@@ -26,5 +26,5 @@
 </div>
 
 <div [hidden]="isHomePage">
-  <app-listado-page [datos]="tornillos"></app-listado-page>
+  <app-listado-page></app-listado-page>
 </div>

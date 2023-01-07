@@ -1,5 +1,5 @@
 export interface Tornillo {
-  id: number;
+  id?: number;
   nombre: string;
   formato: string;
   marca: string;

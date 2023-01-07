@@ -1,5 +1,12 @@
 <!-- Listado de datos -->
-<app-listado-datos [datos]="datos"></app-listado-datos>
+<app-listado-datos
+  [datos]="tornillos"
+  (onDeleteItem)="onDeleteItem($event)"
+></app-listado-datos>
 
 <!-- Footer c/botón de añadir producto -->
 <app-footer-listado></app-footer-listado>
+
+
+<!-- Modal del formulario -->
+<app-formulario (onSave)="onSaveItem($event)"></app-formulario>

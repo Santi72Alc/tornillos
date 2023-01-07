@@ -13,21 +13,22 @@ export class AppComponent implements OnInit {
   userLogged: User;
   isHomePage: boolean;
 
-  tornillos: Array<Tornillo>;
+  numTornillos: number;
   isLoading: boolean;
-  private userTest: User = { isLogged: true, name: 'omcteis' };
+  private userTest: User = { isLogged: true, name: 'omctis' };
   private noUser: User = { isLogged: false, name: 'Iniciar sesión' };
 
-  constructor(private tornillosService: TornillosService) {
+  constructor(private tornillosSrv: TornillosService) {
     this.title = 'Tornillos';
     this.userLogged = this.noUser;
     this.isLoading = false;
     this.isHomePage = true;
-    this.tornillos = new Array<Tornillo>;
+    this.numTornillos = 0;
   }
 
   ngOnInit(): void {
-    this.tornillos = this.tornillosService.getAllTornillos();
+    this.numTornillos = this.tornillosSrv.getAllTornillos().length;
+    this.userLogged = this.userTest;
   }
 
   onChangeState(isLogged: boolean) {
@@ -36,7 +37,6 @@ export class AppComponent implements OnInit {
   }
 
   onRevisar() {
-    console.log('Pulsado para revisar en root!!!');
     // Hacemos tiempo 600ms mostrando un spinner como si estuvieramos
     // leyendo de BDD
     this.isLoading = true;
@@ -45,4 +45,5 @@ export class AppComponent implements OnInit {
       this.isHomePage = false;
     }, 600);
   }
+
 }

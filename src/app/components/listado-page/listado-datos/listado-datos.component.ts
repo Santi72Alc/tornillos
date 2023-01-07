@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PaginationInstance } from 'ngx-pagination';
 import { Tornillo } from 'src/app/models/interfaces';
 
 @Component({
@@ -6,11 +7,39 @@ import { Tornillo } from 'src/app/models/interfaces';
   templateUrl: './listado-datos.component.html',
   styleUrls: ['./listado-datos.component.css'],
 })
-export class ListadoDatosComponent {
+export class ListadoDatosComponent implements OnInit {
   @Input() datos!: Array<Tornillo>;
-  page: number = 1;
-  count: number = 0;
-  itemsPerPage: number = 5;
+  @Output() onDeleteItem: EventEmitter<Tornillo>;
 
-  constructor() {}
+  configPaginate: PaginationInstance;
+  itemsPerPage: number;
+
+  constructor() {
+    this.itemsPerPage = 5;
+    this.configPaginate = {
+      itemsPerPage: this.itemsPerPage,
+      currentPage: 1,
+      totalItems: 0,
+    };
+    this.onDeleteItem = new EventEmitter();
+  }
+
+  ngOnInit(): void {
+    this.configPaginate.totalItems = this.datos.length;
+  }
+
+  onChangePage(page: number) {
+    this.configPaginate.currentPage = page;
+  }
+
+  onChangeItemsPerPage(evt: any) {
+    const numItems = evt.target.value;
+    this.configPaginate.itemsPerPage = numItems;
+    this.configPaginate.currentPage = 1;
+  }
+
+  onSelectItem(item: Tornillo) {
+    console.log('pulsado: ', item);
+    this.onDeleteItem.emit(item);
+  }
 }
