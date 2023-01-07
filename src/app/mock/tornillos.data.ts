@@ -1,4 +1,4 @@
-import { Tornillo } from "../types/types";
+import { Tornillo } from "../models/interfaces";
 
 export const data: Array<Tornillo> = [
     {

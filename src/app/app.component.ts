@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { timeout } from 'rxjs';
-import { data } from './mock/tornillos.data';
-import { Tornillo, User } from './types/types';
+import { Tornillo, User } from './models/interfaces';
+import { TornillosService } from './services/tornillos.service';
 
 @Component({
   selector: 'app-root',
@@ -14,20 +13,21 @@ export class AppComponent implements OnInit {
   userLogged: User;
   isHomePage: boolean;
 
-  tornillos: Array<Tornillo> = [];
+  tornillos: Array<Tornillo>;
   isLoading: boolean;
   private userTest: User = { isLogged: true, name: 'omcteis' };
   private noUser: User = { isLogged: false, name: 'Iniciar sesión' };
 
-  constructor() {
+  constructor(private tornillosService: TornillosService) {
     this.title = 'Tornillos';
     this.userLogged = this.noUser;
     this.isLoading = false;
     this.isHomePage = true;
+    this.tornillos = new Array<Tornillo>;
   }
 
   ngOnInit(): void {
-    this.tornillos = data;
+    this.tornillos = this.tornillosService.getAllTornillos();
   }
 
   onChangeState(isLogged: boolean) {
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
   onRevisar() {
     console.log('Pulsado para revisar en root!!!');
-    // Hacemos tiempo 500ms mostrando un spinner como si estuvieramos
+    // Hacemos tiempo 600ms mostrando un spinner como si estuvieramos
     // leyendo de BDD
     this.isLoading = true;
     setTimeout(() => {

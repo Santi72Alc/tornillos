@@ -1,0 +1,46 @@
+<section id="listado-datos">
+  <div class="tabla-datos">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Formato</th>
+          <th scope="col">Marca</th>
+          <th scope="col" class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let rowData of datos
+              | paginate
+                : { itemsPerPage: itemsPerPage, currentPage: page, totalItems: count }
+          "
+        >
+          <th scope="row">{{ rowData.id }}</th>
+          <td>{{ rowData.nombre }}</td>
+          <td>{{ rowData.precio.toFixed(2) }} €</td>
+          <td>{{ rowData.formato }}</td>
+          <td>{{ rowData.marca }}</td>
+          <td class="d-flex justify-content-evenly">
+            <div>
+              <span class="btn-accion material-icons"> delete_outline </span>
+            </div>
+            <!-- <div>
+              <span class="btn-accion material-icons"> delete_outline </span>
+            </div> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <pagination-controls
+        (pageChange)="page = $event"
+        previousLabel="<"
+        nextLabel=">"
+      ></pagination-controls>
+    </div>
+  </div>
+</section>

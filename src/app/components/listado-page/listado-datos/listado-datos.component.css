@@ -1,0 +1,11 @@
+.tabla-datos {
+    padding-top: 40px;
+    width: 80%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-accion:hover {
+  cursor: pointer;
+}
