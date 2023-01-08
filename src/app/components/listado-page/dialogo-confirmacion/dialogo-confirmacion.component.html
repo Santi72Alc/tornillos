@@ -1,10 +1,16 @@
 <section id="dialogo-confirmacion">
-  <h1 mat-dialog-title>{{ data.titulo }}</h1>
-  <div mat-dialog-content>
-    <p>{{ data.mensaje }}</p>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button (click)="cerrarDialogo()">No</button>
-    <button mat-button (click)="confirmado()" cdkFocusInitial>Sí</button>
+  <div class="card">
+    <div class="card-header text-center">
+      <h5 class="card-title">{{ data.titulo }}</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text text-center">
+        {{ data.mensaje }}
+      </p>
+    </div>
+    <div class="d-flex justify-content-evenly p-4 border border-top">
+      <button class="btn btn-secondary" (click)="cerrarDialogo()">Cancelar</button>
+      <button class="btn btn-success" (click)="confirmado()">Borrar</button>
+    </div>
   </div>
 </section>

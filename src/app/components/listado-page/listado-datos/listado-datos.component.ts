@@ -46,12 +46,11 @@ export class ListadoDatosComponent implements OnInit {
   }
 
   onSelectItem(item: Tornillo) {
-    console.log('pulsado: ', item);
     this.dialogo
       .open(DialogoConfirmacionComponent, {
         data: {
           titulo: 'Borrado de registro',
-          mensaje: `¿ Borrar registro ID: ${item.id} - ${item.nombre} ?`,
+          mensaje: `¿ Confirma el borrado del registro ID: ${item.id} - ${item.nombre} ?`,
         },
       })
       .afterClosed()
