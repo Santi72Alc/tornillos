@@ -31,9 +31,14 @@ export class AppComponent implements OnInit {
     this.userLogged = this.userTest;
   }
 
-  onChangeState(isLogged: boolean) {
-    this.userLogged = isLogged ? this.userTest : this.noUser;
-    if (!isLogged) this.isHomePage = true;
+  login() {
+    this.userLogged = this.userTest;
+    this.isHomePage = true;
+  }
+
+  logout() {
+    this.userLogged = this.noUser;
+    this.isHomePage = true;
   }
 
   onRevisar() {
@@ -42,8 +47,7 @@ export class AppComponent implements OnInit {
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
-      this.isHomePage = false;
+      this.isHomePage = false; // Para cambiar a la página de datos
     }, 600);
   }
-
 }
