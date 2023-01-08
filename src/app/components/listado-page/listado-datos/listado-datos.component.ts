@@ -17,15 +17,12 @@ export class ListadoDatosComponent implements OnInit {
 
   configPaginate: PaginationInstance;
 
-  mostarModal: boolean;
-
   constructor(private dialogo: MatDialog) {
     this.configPaginate = {
       itemsPerPage: 5,
       currentPage: 1,
       totalItems: 0,
     };
-    this.mostarModal = false;
     this.onDeleteItem = new EventEmitter();
   }
 

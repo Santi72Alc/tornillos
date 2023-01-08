@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 // Modulos
@@ -42,7 +42,7 @@ import { DialogoConfirmacionComponent } from './components/listado-page/dialogo-
     BrowserModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    FormsModule,
+    ReactiveFormsModule,
     MatDialogModule,
     MatButtonModule,
   ],

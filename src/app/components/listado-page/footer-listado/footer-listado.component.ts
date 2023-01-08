@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Tornillo } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-footer-listado',
@@ -7,8 +6,12 @@ import { Tornillo } from 'src/app/models/interfaces';
   styleUrls: ['./footer-listado.component.css'],
 })
 export class FooterListadoComponent {
+  @Output() onNuevoItem: EventEmitter<void>;
   constructor() {
+    this.onNuevoItem = new EventEmitter();
   }
 
-
+  nuevoItem() {
+    this.onNuevoItem.emit();
+  }
 }

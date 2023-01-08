@@ -5,8 +5,4 @@
 ></app-listado-datos>
 
 <!-- Footer (Botón de añadir producto) -->
-<app-footer-listado></app-footer-listado>
-
-
-<!-- Modal del formulario -->
-<app-formulario (onSave)="onSaveItem($event)"></app-formulario>
+<app-footer-listado (onNuevoItem)="openFormulario()"></app-footer-listado>
