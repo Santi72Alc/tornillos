@@ -7,11 +7,11 @@ import { Tornillo } from 'src/app/models/interfaces';
   styleUrls: ['./formulario.component.css'],
 })
 export class FormularioComponent {
-  @Output() onSave: EventEmitter<Tornillo>;
+  @Output('onSave') saveItem: EventEmitter<Tornillo>;
   newTornillo: Tornillo;
 
   constructor() {
-    this.onSave = new EventEmitter();
+    this.saveItem = new EventEmitter();
     this.newTornillo = {
       nombre: '',
       formato: '',
@@ -20,9 +20,10 @@ export class FormularioComponent {
     };
   }
 
+
   onSaveItem() {
     // Generamos un ID 'pseudo-aleatorio'
     this.newTornillo.id = Math.floor(Math.random() * 100_000);
-    this.onSave.emit(this.newTornillo);
+    this.saveItem.emit(this.newTornillo);
   }
 }

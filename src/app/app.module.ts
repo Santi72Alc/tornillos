@@ -5,6 +5,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 // Modulos
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 // Servicios
 import { TornillosService } from './services/tornillos.service';
@@ -18,6 +24,7 @@ import { ListadoPageComponent } from './components/listado-page/listado-page.com
 import { FooterListadoComponent } from './components/listado-page/footer-listado/footer-listado.component';
 import { ListadoDatosComponent } from './components/listado-page/listado-datos/listado-datos.component';
 import { FormularioComponent } from './components/listado-page/formulario/formulario.component';
+import { DialogoConfirmacionComponent } from './components/listado-page/dialogo-confirmacion/dialogo-confirmacion.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +36,24 @@ import { FormularioComponent } from './components/listado-page/formulario/formul
     FooterListadoComponent,
     ListadoDatosComponent,
     FormularioComponent,
+    DialogoConfirmacionComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     NgxPaginationModule,
     FormsModule,
-    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
-  providers: [TornillosService],
+  providers: [
+    TornillosService,
+    {
+      provide: MAT_DIALOG_DATA,
+      useValue: {},
+    },
+    { provide: MatDialogRef, useValue: {} },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

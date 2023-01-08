@@ -26,7 +26,6 @@ export class ListadoPageComponent implements OnInit {
     this.tornillos = this.tornillosSrv.getAllTornillos();
   }
 
-
   onDeleteItem(item: Tornillo): void {
     this.tornillos = this.tornillos.filter(
       (tornillo) => tornillo.id !== item.id

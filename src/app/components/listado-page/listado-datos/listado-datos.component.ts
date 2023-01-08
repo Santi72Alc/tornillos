@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PaginationInstance } from 'ngx-pagination';
+
+import { MatDialog } from '@angular/material/dialog';
+import { DialogoConfirmacionComponent } from '../dialogo-confirmacion/dialogo-confirmacion.component';
+
 import { Tornillo } from 'src/app/models/interfaces';
 
 @Component({
@@ -14,13 +18,16 @@ export class ListadoDatosComponent implements OnInit {
   configPaginate: PaginationInstance;
   itemsPerPage: number;
 
-  constructor() {
+  mostarModal: boolean;
+
+  constructor(private dialogo: MatDialog) {
     this.itemsPerPage = 5;
     this.configPaginate = {
       itemsPerPage: this.itemsPerPage,
       currentPage: 1,
       totalItems: 0,
     };
+    this.mostarModal = false;
     this.onDeleteItem = new EventEmitter();
   }
 
@@ -40,6 +47,16 @@ export class ListadoDatosComponent implements OnInit {
 
   onSelectItem(item: Tornillo) {
     console.log('pulsado: ', item);
-    this.onDeleteItem.emit(item);
+    this.dialogo
+      .open(DialogoConfirmacionComponent, {
+        data: {
+          titulo: 'Borrado de registro',
+          mensaje: `¿ Borrar registro ID: ${item.id} - ${item.nombre} ?`,
+        },
+      })
+      .afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        if (confirmado) this.onDeleteItem.emit(item);
+      });
   }
 }
