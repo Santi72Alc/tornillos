@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.numTornillos = this.tornillosSrv.getAllTornillos().length;
-    this.userLogged = this.userTest;
+    this.userLogged = this.noUser;
   }
 
   login() {
