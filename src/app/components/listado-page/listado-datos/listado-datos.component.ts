@@ -16,14 +16,12 @@ export class ListadoDatosComponent implements OnInit {
   @Output() onDeleteItem: EventEmitter<Tornillo>;
 
   configPaginate: PaginationInstance;
-  itemsPerPage: number;
 
   mostarModal: boolean;
 
   constructor(private dialogo: MatDialog) {
-    this.itemsPerPage = 5;
     this.configPaginate = {
-      itemsPerPage: this.itemsPerPage,
+      itemsPerPage: 5,
       currentPage: 1,
       totalItems: 0,
     };
@@ -42,7 +40,6 @@ export class ListadoDatosComponent implements OnInit {
   onChangeItemsPerPage(evt: any) {
     const numItems = evt.target.value;
     this.configPaginate.itemsPerPage = numItems;
-    this.configPaginate.currentPage = 1;
   }
 
   onSelectItem(item: Tornillo) {

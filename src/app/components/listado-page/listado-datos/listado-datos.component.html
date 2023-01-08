@@ -34,33 +34,48 @@
       </table>
     </div>
     <pagination-template #p="paginationApi">
-      <div class="d-flex justify-content-between">
-        <div class="d-flex">
-          <label
-            >Items por página
-            <input
-              class="mr-4"
-              size="5"
+      <div class="info-paginacion">
+        <div class="d-flex align-self-top me-auto">
+          <p class="m-0 align-self-center">Items por página</p>
+          <div class="px-3">
+            <select
+              class="form-select"
               name="itemsPerPage"
-              type="number"
-              [value]="configPaginate.itemsPerPage"
               (change)="onChangeItemsPerPage($event)"
-            />
-          </label>
+              [value]="configPaginate.itemsPerPage"
+            >
+              <option
+                value="{{ 5 }}"
+                [selected]="configPaginate.itemsPerPage === 5"
+              >
+                5
+              </option>
+              <option
+                value="{{ 20 }}"
+                [selected]="configPaginate.itemsPerPage === 20"
+              >
+                20
+              </option>
+              <option
+                value="{{ 50 }}"
+                [selected]="configPaginate.itemsPerPage === 50"
+              >
+                50
+              </option>
+            </select>
+          </div>
         </div>
         <div class="d-flex">
-          <div class="pagination-page">
+          <!-- <div class="align-self-center"> -->
             {{ p.getCurrent() }} de {{ p.getLastPage() }} páginas
-          </div>
-          <div class="pagination-controlers">
-            <pagination-controls
-              previousLabel="Anterior"
-              nextLabel="Siguiente"
-              [maxSize]="0"
-              (pageChange)="onChangePage($event)"
-              (pageBoundsCorrection)="onChangePage($event)"
-            ></pagination-controls>
-          </div>
+          <!-- </div> -->
+          <pagination-controls
+            previousLabel="Anterior"
+            nextLabel="Siguiente"
+            [maxSize]="0"
+            (pageChange)="onChangePage($event)"
+            (pageBoundsCorrection)="onChangePage($event)"
+          ></pagination-controls>
         </div>
       </div>
     </pagination-template>
@@ -68,4 +83,4 @@
 </section>
 
 <!-- Modal confirmación borrado registro -->
-<app-dialogo-confirmacion></app-dialogo-confirmacion>
+<app-dialogo-confirmacion [hidden]="true"></app-dialogo-confirmacion>

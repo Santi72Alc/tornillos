@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  NgProbeToken,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { timeInterval } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Tornillo } from 'src/app/models/interfaces';
 import { TornillosService } from 'src/app/services/tornillos.service';
 
