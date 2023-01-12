@@ -12,6 +12,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Contiene datos de ejemplo de registros de 'TORNILLOS' en el fichero <tornillos.data.ts> ubicado en _src/app/mock_
 
+## INSTALACIÓN
+
+Se deben instalar las dependencias antes de la ejecución del programa.  
+Nos situaremos dentro de la carpeta del proyecto y ejecutaremos:
+
+<code>npm install</code>
+
+Cuando finalice la instalación de las dependencias, podremos arrancar el proyecto con...
+
+<code>ng serve -o</code>
+
+La opción '-o' nos abre el navegador al abrirse la apliación.
+
 ---
 
 ## Development server
@@ -40,6 +53,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ---
 
-[Santiago San Román Játiva](mailto:santi72alc@gmail.com)
-
-Enero 2023
+[Santiago San Román Játiva](mailto:santi72alc@gmail.com)  
+Enero 2023  
+Gracias por la oportunidad 

@@ -1,6 +1,8 @@
-<p>listado-page works!</p>
+<!-- Listado de datos -->
+<app-listado-datos
+  [datos]="tornillos"
+  (onDeleteItem)="onDeleteItem($event)"
+></app-listado-datos>
 
-
-
-<!-- Footer c/botón de añadir producto -->
-<app-footer-listado></app-footer-listado>
+<!-- Footer (Botón de añadir producto) -->
+<app-footer-listado (onNuevoItem)="openFormulario()"></app-footer-listado>

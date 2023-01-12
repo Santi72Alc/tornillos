@@ -1,7 +1,8 @@
 <!-- Header (Nos permite logearnos o salirnos)-->
 <app-header
   [userLogged]="userLogged"
-  (onChangeState)="onChangeState($event)"
+  (onLogin)="login()"
+  (onLogout)="logout()"
 ></app-header>
 
 <!-- Página inicial -->
@@ -12,11 +13,12 @@
   <!-- Ventana info de inicio -->
   <app-window-info
     [userLogged]="userLogged"
-    [registros]="tornillos.length"
+    [registros]="numTornillos"
     (onRevisar)="onRevisar()"
     [hidden]="isLoading"
   ></app-window-info>
 
+  <!-- Spinner simulando carga de datos -->
   <div class="box-spinner" [hidden]="!isLoading">
     <div class="my-spinner spinner-border text-success" role="status">
       <span class="visually-hidden">Loading...</span>

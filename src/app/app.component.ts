@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { timeout } from 'rxjs';
-import { data } from './mock/tornillos.data';
-import { Tornillo, User } from './types/types';
+import { Tornillo, User } from './models/interfaces';
+import { TornillosService } from './services/tornillos.service';
 
 @Component({
   selector: 'app-root',
@@ -14,35 +13,41 @@ export class AppComponent implements OnInit {
   userLogged: User;
   isHomePage: boolean;
 
-  tornillos: Array<Tornillo> = [];
+  numTornillos: number;
   isLoading: boolean;
-  private userTest: User = { isLogged: true, name: 'omcteis' };
+  private userTest: User = { isLogged: true, name: 'omctis' };
   private noUser: User = { isLogged: false, name: 'Iniciar sesión' };
 
-  constructor() {
+  constructor(private tornillosSrv: TornillosService) {
     this.title = 'Tornillos';
     this.userLogged = this.noUser;
     this.isLoading = false;
     this.isHomePage = true;
+    this.numTornillos = 0;
   }
 
   ngOnInit(): void {
-    this.tornillos = data;
+    this.numTornillos = this.tornillosSrv.getAllTornillos().length;
+    this.userLogged = this.noUser;
   }
 
-  onChangeState(isLogged: boolean) {
-    this.userLogged = isLogged ? this.userTest : this.noUser;
-    if (!isLogged) this.isHomePage = true;
+  login() {
+    this.userLogged = this.userTest;
+    this.isHomePage = true;
+  }
+
+  logout() {
+    this.userLogged = this.noUser;
+    this.isHomePage = true;
   }
 
   onRevisar() {
-    console.log('Pulsado para revisar en root!!!');
-    // Hacemos tiempo 500ms mostrando un spinner como si estuvieramos
+    // Hacemos tiempo 600ms mostrando un spinner como si estuvieramos
     // leyendo de BDD
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
-      this.isHomePage = false;
+      this.isHomePage = false; // Para cambiar a la página de datos
     }, 600);
   }
 }

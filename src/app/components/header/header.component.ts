@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from 'src/app/types/types';
+import { User } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +9,15 @@ import { User } from 'src/app/types/types';
 export class HeaderComponent {
   @Input() userLogged!: User;
 
-  @Output() onChangeState: EventEmitter<boolean>;
+  @Output() onLogin: EventEmitter<void>;
+  @Output() onLogout: EventEmitter<void>;
 
   constructor() {
-    this.onChangeState = new EventEmitter();
+    this.onLogin = new EventEmitter();
+    this.onLogout = new EventEmitter();
   }
 
-  onClick(state: boolean) {
-    this.onChangeState.emit(state);
+  onClick(isLogged: boolean) {
+    isLogged ? this.onLogin.emit() : this.onLogout.emit();
   }
 }

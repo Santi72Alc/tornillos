@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { User } from 'src/app/types/types';
+import { User } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-window-info',

@@ -1,0 +1,119 @@
+<section id="dialogo-confirmacion">
+  <div class="my-card">
+    <div class="card">
+      <div class="card-header text-center">
+        <h4 class="card-title">Nuevo producto</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="formulario" (ngSubmit)="saveItem()">
+          <!-- Nombre -->
+          <div class="mx-4 m-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="nombre"
+              placeholder="Nombre"
+            />
+            <div
+              class="alert-danger"
+              *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)"
+            >
+              Nombre es requerido
+            </div>
+          </div>
+
+          <!-- Precio y formato -->
+          <div class="mx-4 mb-3 d-flex justify-content-between">
+            <div>
+              <label for="precio" class="form-label">Precio</label>
+              <input
+                type="number"
+                class="form-control"
+                size="8"
+                [min]="0.0"
+                step="0.1"
+                formControlName="precio"
+              />
+              <div
+                class="alert-danger"
+                *ngIf="precio?.invalid && (precio?.dirty || precio?.touched)"
+              >
+                <div
+                  class="container-error-message"
+                  *ngIf="precio?.errors?.['required']"
+                >
+                  Precio es requerido
+                </div>
+              </div>
+            </div>
+            <div>
+              <label for="formato" class="form-label">Formato</label>
+              <select formControlName="formato" class="form-select" >
+                <option
+                  *ngFor="let color of COLORES; first as isFirst"
+                  [value]="color"
+                  [selected]="isFirst ? true : false"
+                >
+                  {{ color }}
+                </option>
+              </select>
+              <div
+                class="alert-danger"
+                *ngIf="formato?.invalid && (formato?.dirty || formato?.touched)"
+              >
+                <div
+                  class="container-error-message"
+                  *ngIf="formato?.errors?.['required']"
+                >
+                  Formato es requerido
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marca -->
+          <div class="mx-4 mb-3">
+            <label for="marca" class="form-label">Marca</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="marca"
+              placeholder="Marca"
+            />
+            <div
+              class="alert-danger"
+              *ngIf="marca?.invalid && (marca?.dirty || marca?.touched)"
+            >
+              <div
+                class="container-error-message"
+                *ngIf="marca?.errors?.['required']"
+              >
+                Marca es requerido
+              </div>
+            </div>
+          </div>
+
+          <!-- Botones -->
+          <div class="modal-footer d-flex justify-content-between pt-4">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="cierraFormulario()"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              aria-label="Guardar"
+              [disabled]="!formulario.valid"
+            >
+              Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
